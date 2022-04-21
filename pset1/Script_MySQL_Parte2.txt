@@ -479,19 +479,7 @@ insert into trabalha_em values (
      '88866555576', 20, null
 );
 
-desc departamento;
-desc dependente;
-desc funcionario;
-desc localizacoes_departamento;
-desc projeto;
-desc trabalha_em;
 
-select* from departamento;
-select* from dependente;
-select* from funcionario;
-select* from localizacoes_departamento;
-select* from projeto;
-select* from trabalha_em;
 
 
 
