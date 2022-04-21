@@ -228,6 +228,16 @@ add check (data_nascimento between '1930-01-01' and '2022-01-01')
 -- Adicionando constraint da Idade
 ;
 
+alter table funcionario
+add check (salario>=0)
+-- Adicionando constraint do salário
+;
+
+alter table trabalha_em
+add check (horas>=0)
+-- Adicionando constraint das horas
+;
+
 
 
 insert into funcionario values (
