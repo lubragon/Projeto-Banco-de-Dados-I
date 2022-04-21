@@ -1,5 +1,5 @@
 -- Primeiro script, apenas para logar no usuário
 create user lucasbraganca identified by '123';
-grant all privileges on *.* to 'lucasbraganca' with grant option;
+grant create, alter, drop, references, delete, update, index, insert, select on *.* to 'lucasbraganca';
 -- Inserir senha 123
 system mysql -u lucasbraganca -p
