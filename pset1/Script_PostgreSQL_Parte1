@@ -1,0 +1,29 @@
+-- Criando usuário com as definições
+
+create user lucasbraganca with  
+  login
+  nosuperuser 
+  inherit
+  createdb
+  createrole
+  replication 
+  encrypted password '123';
+
+-- Criando o banco de dados uvv e apontando meu usuário como dono
+
+create database uvv 
+with owner = lucasbraganca  
+template = template0 
+encoding = 'UTF8' 
+lc_collate = 'pt_BR.UTF-8' 
+lc_ctype = 'pt_BR.UTF-8'
+allow_connections = true;
+
+-- Colocando o path
+
+alter user lucasbraganca
+set search_path to elmasri, "$user", public;
+
+-- Conectando no banco de dados
+-- Inserir senha 123
+\c uvv lucasbraganca;
