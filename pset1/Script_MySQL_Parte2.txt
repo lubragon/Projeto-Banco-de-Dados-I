@@ -66,6 +66,7 @@ ALTER TABLE departamento MODIFY COLUMN data_inicio_gerente DATE COMMENT 'Data do
 
 
 -- Criando Index Único, uma Alternate Key da tabela departamento
+
 CREATE UNIQUE INDEX departamento_idx
  ON departamento
  ( nome_departamento 
