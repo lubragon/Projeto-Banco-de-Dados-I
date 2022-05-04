@@ -1,0 +1,12 @@
+-- Questao 2
+SELECT 
+  nome_departamento, 
+  primeiro_nome, nome_meio, ultimo_nome, 
+  data_nascimento, 
+  TIMESTAMPDIFF(YEAR,data_nascimento, NOW()) AS idade, 
+  salario 
+FROM 
+  departamento
+INNER JOIN funcionario 
+ON (departamento.numero_departamento = funcionario.numero_departamento);
+
