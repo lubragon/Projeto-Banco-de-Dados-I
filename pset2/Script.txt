@@ -1,61 +1,99 @@
--- Questao 3
+/* Questao 1: Descobrir a media de salario dos funcionarios de cada departamento*/
+
+SELECT AVG(salario) AS media
+FROM funcionario
+WHERE numero_departamento = 5
+UNION
+SELECT AVG(salario) AS media 
+FROM funcionario
+WHERE numero_departamento = 4
+UNION
+SELECT AVG(salario) AS media1 
+FROM funcionario
+WHERE numero_departamento = 1
+;
+
+
+
+/* Questao 2: Descobrir media salarial de homens e mulheres*/
+
+SELECT AVG(salario) AS media_sexo 
+FROM funcionario
+WHERE sexo = 'M'
+UNION
+SELECT AVG(salario) AS media_sexo 
+FROM funcionario
+WHERE sexo = 'F';
+
+
+/* Questao 3: Prepare um relatório que liste o nome dos departamentos e, para
+cada departamento, inclua as seguintes informações de seus funcionários: o nome
+completo, a data de nascimento, a idade em anos completos e o salário. */
+
 SELECT 
-  nome_departamento, 
-  primeiro_nome, nome_meio, ultimo_nome, 
-  data_nascimento, 
-  TIMESTAMPDIFF(YEAR,data_nascimento, NOW()) AS idade, 
-  salario 
-FROM 
-  departamento
-INNER JOIN funcionario 
-ON (departamento.numero_departamento = funcionario.numero_departamento);
-
-
-Rascunho
-
-
-
-SELECT nome_departamento, 
-	(primeiro_nome, nome_meio, ultimo_nome) as nome, 
+	nome_departamento AS departamento, 
+	(primeiro_nome, nome_meio, ultimo_nome) AS nome, 
 	data_nascimento, 
+	DATE_PART ('year', NOW()) - DATE_PART ('year', data_nascimento)   as idade, 
 	salario 
-FROM departamento
-INNER JOIN funcionario ON (departamento.numero_departamento = funcionario.numero_departamento);
+FROM 
+	departamento dp
+INNER JOIN funcionario  f ON f.numero_departamento = dp.numero_departamento;
 
 
 /* QUESTÃO 04: prepare um relatório que mostre o nome completo dos funcionários,
 a idade em anos completos, o salário atual e o salário com um reajuste que
 obedece ao seguinte critério: se o salário atual do funcionário é inferior a 35.000 o
 reajuste deve ser de 20%, e se o salário atual do funcionário for igual ou superior a
-35.000 o reajuste deve ser de 15%. */
+35.000 o reajuste deve ser de 15%.*/
+
+SELECT 
+ 	(primeiro_nome, nome_meio, ultimo_nome) AS nome,
+ 	DATE_PART ('year', NOW()) - DATE_PART ('year', data_nascimento) AS idade, 
+	salario as salario_atual, 
+CASE 
+	WHEN salario < 35000 THEN salario + salario * 0.2
+	WHEN salario >= 35000 THEN salario + salario * 0.15 
+END AS salario_reajustado
+FROM funcionario;
+
+/* QUESTÃO 05: prepare um relatório que liste, para cada departamento, o nome
+do gerente e o nome dos funcionários. Ordene esse relatório por nome do departamento
+(em ordem crescente) e por salário dos funcionários (em ordem decrescente). */
+
+
+INCOMPLETA 
 
 
 SELECT 
-	primeiro_nome, nome_meio, ultimo_nome, 
-	TIMESTAMPDIFF(YEAR,data_nascimento, NOW()) AS idade,
+	nome_departamento,	
+CASE 
+	WHEN dp.cpf_gerente = f.cpf THEN (primeiro_nome, nome_meio, ultimo_nome)
+
+END AS gerente,
+	(primeiro_nome, nome_meio, ultimo_nome) AS funcionario,
 	salario
-FROM funcionario;
+
+FROM departamento dp
+
+INNER JOIN funcionario f ON (dp.numero_departamento = f.numero_departamento);
+
+
 
 
 SELECT 
-	primeiro_nome, nome_meio, ultimo_nome, 
-	TIMESTAMPDIFF(YEAR,data_nascimento, NOW()) AS idade,
-	salario,
-	set salario = salario * 1.025 AS reajuste
-FROM funcionario;
+	nome_departamento,	
+CASE 
+	WHEN EXISTS (SELECT primeiro_nome
+		     FROM   funcionario
+		     WHERE dp.cpf_gerente = f.cpf
 
+END AS gerente),
+	(primeiro_nome, nome_meio, ultimo_nome) AS funcionario,
+	salario
 
+FROM departamento dp
 
-
-
-
-
-SELECT nome_departamento, primeiro_nome, nome_meio, ultimo_nome, data_nascimento, DATEDIFF(YEAR, data_nascimento, '2022-05-03'), salario FROM departamento
-INNER JOIN funcionario ON (departamento.numero_departamento = funcionario.numero_departamento);
-
-
-SELECT NOW()
-
-GETDATE()
-
-SELECT TIMESTAMPDIFF(YEAR,data_nascimento, NOW()) FROM funcionario;
+INNER JOIN funcionario f ON (dp.numero_departamento = f.numero_departamento);
+ 
+ 
