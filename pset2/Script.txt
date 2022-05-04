@@ -165,7 +165,6 @@ INNER JOIN trabalha_em te ON (te.numero_projeto = p.numero_projeto)
 GROUP BY funcionario, nome_projeto
 ORDER BY funcionario ASC;
 
-
 /* QUESTÃO 12: seu chefe está verificando as horas trabalhadas pelos funcionários
 nos projetos e percebeu que alguns funcionários, mesmo estando alocadas à algum
 projeto, não registraram nenhuma hora trabalhada. Sua tarefa é preparar um relatório
@@ -176,7 +175,8 @@ que, mesmo estando alocados a algum projeto, não registraram nenhuma hora traba
 SELECT DISTINCT
 	nome_departamento,
 	nome_projeto,
-	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
+	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario
+
 FROM funcionario f
 INNER JOIN departamento d ON ( d.numero_departamento = f.numero_departamento)
 INNER JOIN projeto p ON ( p.numero_departamento = d.numero_departamento)
