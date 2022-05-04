@@ -172,15 +172,14 @@ projeto, não registraram nenhuma hora trabalhada. Sua tarefa é preparar um rel
 que liste o nome do departamento, o nome do projeto e o nome dos funcionários
 que, mesmo estando alocados a algum projeto, não registraram nenhuma hora trabalhada. */
 
--------------- INCOMPLETA ------------
-
 
 SELECT DISTINCT
 	nome_departamento,
 	nome_projeto,
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
-	horas
 FROM funcionario f
 INNER JOIN departamento d ON ( d.numero_departamento = f.numero_departamento)
 INNER JOIN projeto p ON ( p.numero_departamento = d.numero_departamento)
-INNER JOIN trabalha_em te ON ( te.cpf_funcionario = f.cpf);
+INNER JOIN trabalha_em te ON ( te.cpf_funcionario = f.cpf)
+WHERE te.horas IS NULL;
+
