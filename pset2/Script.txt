@@ -1,4 +1,4 @@
--- Questao 2
+-- Questao 3
 SELECT 
   nome_departamento, 
   primeiro_nome, nome_meio, ultimo_nome, 
@@ -10,3 +10,52 @@ FROM
 INNER JOIN funcionario 
 ON (departamento.numero_departamento = funcionario.numero_departamento);
 
+
+Rascunho
+
+
+
+SELECT nome_departamento, 
+	(primeiro_nome, nome_meio, ultimo_nome) as nome, 
+	data_nascimento, 
+	salario 
+FROM departamento
+INNER JOIN funcionario ON (departamento.numero_departamento = funcionario.numero_departamento);
+
+
+/* QUESTÃO 04: prepare um relatório que mostre o nome completo dos funcionários,
+a idade em anos completos, o salário atual e o salário com um reajuste que
+obedece ao seguinte critério: se o salário atual do funcionário é inferior a 35.000 o
+reajuste deve ser de 20%, e se o salário atual do funcionário for igual ou superior a
+35.000 o reajuste deve ser de 15%. */
+
+
+SELECT 
+	primeiro_nome, nome_meio, ultimo_nome, 
+	TIMESTAMPDIFF(YEAR,data_nascimento, NOW()) AS idade,
+	salario
+FROM funcionario;
+
+
+SELECT 
+	primeiro_nome, nome_meio, ultimo_nome, 
+	TIMESTAMPDIFF(YEAR,data_nascimento, NOW()) AS idade,
+	salario,
+	set salario = salario * 1.025 AS reajuste
+FROM funcionario;
+
+
+
+
+
+
+
+SELECT nome_departamento, primeiro_nome, nome_meio, ultimo_nome, data_nascimento, DATEDIFF(YEAR, data_nascimento, '2022-05-03'), salario FROM departamento
+INNER JOIN funcionario ON (departamento.numero_departamento = funcionario.numero_departamento);
+
+
+SELECT NOW()
+
+GETDATE()
+
+SELECT TIMESTAMPDIFF(YEAR,data_nascimento, NOW()) FROM funcionario;
