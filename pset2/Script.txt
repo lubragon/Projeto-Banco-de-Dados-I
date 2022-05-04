@@ -183,3 +183,41 @@ INNER JOIN projeto p ON ( p.numero_departamento = d.numero_departamento)
 INNER JOIN trabalha_em te ON ( te.cpf_funcionario = f.cpf)
 WHERE te.horas IS NULL;
 
+/* QUESTÃO 13: durante o natal deste ano a empresa irá presentear todos os funcionários
+e todos os dependentes (sim, a empresa vai dar um presente para cada
+funcionário e um presente para cada dependente de cada funcionário) e pediu para
+que você preparasse um relatório que listasse o nome completo das pessoas a serem
+presenteadas (funcionários e dependentes), o sexo e a idade em anos completos
+(para poder comprar um presente adequado). Esse relatório deve estar ordenado
+pela idade em anos completos, de forma decrescente. */
+
+SELECT
+	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS nome_completo,
+	DATE_PART ('year', NOW()) - DATE_PART ('year', data_nascimento) 	AS idade,
+	sexo 									AS genero								
+FROM funcionario 
+UNION
+SELECT
+	CONCAT(nome_dependente,' ', ultimo_nome),
+	DATE_PART ('year', NOW()) - DATE_PART ('year', d.data_nascimento),
+	d.sexo 					
+FROM dependente d
+INNER JOIN funcionario f ON ( d.cpf_funcionario = f.cpf)
+ORDER BY idade DESC;
+
+
+
+
+/* QUESTÃO 14: prepare um relatório que exiba quantos funcionários cada departamento
+tem. */
+	
+SELECT
+	f.numero_departamento 		AS numero,
+	d.nome_departamento 		AS departamento,
+	COUNT(cpf) 			AS numero_funcionarios
+
+FROM funcionario f
+INNER JOIN departamento d ON (d.numero_departamento = f.numero_departamento)
+GROUP BY departamento, f.numero_departamento;
+
+
