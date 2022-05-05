@@ -221,3 +221,17 @@ INNER JOIN departamento d ON (d.numero_departamento = f.numero_departamento)
 GROUP BY departamento, f.numero_departamento;
 
 
+/* QUESTÃO 15: como um funcionário pode estar alocado em mais de um projeto,
+prepare um relatório que exiba o nome completo do funcionário, o departamento
+desse funcionário e o nome dos projetos em que cada funcionário está alocado.
+Atenção: se houver algum funcionário que não está alocado em nenhum projeto,
+o nome completo e o departamento também devem aparecer no relatório. */
+
+SELECT 
+	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS nome_completo,
+	nome_departamento,
+	nome_projeto
+FROM funcionario f
+INNER JOIN departamento d ON (d.numero_departamento = f.numero_departamento)
+INNER JOIN projeto p ON (p.numero_departamento = d.numero_departamento);
+	
