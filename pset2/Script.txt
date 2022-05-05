@@ -1,7 +1,7 @@
 /* QUESTÃO 01: prepare um relatório que mostre a média salarial dos funcionários
 de cada departamento. */
 
-#SELECT 
+SELECT 
 	numero_departamento 	AS departamento,
 	AVG(salario)		AS media_salarial
 FROM funcionario
