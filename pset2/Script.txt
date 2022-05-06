@@ -1,3 +1,11 @@
+/*
+
+Professor, construí todo o script usando o command line do PostgreSQL, quando testei alguns comandos no MySql da faculdade não rodou. Comando comando como o que usei para tirar o valor da idade em anos, DATEPART no PostgreSQL que sempre dá erro no MySQL.
+
+*/
+
+
+
 /* QUESTÃO 01: prepare um relatório que mostre a média salarial dos funcionários
 de cada departamento. */
 
@@ -57,21 +65,21 @@ do gerente e o nome dos funcionários. Ordene esse relatório por nome do depart
 (em ordem crescente) e por salário dos funcionários (em ordem decrescente). */
 /*
 
--------------- INCOMPLETA ------------
-
-
 SELECT 
-	nome_departamento,	
+		
 CASE 
-	WHEN dp.cpf_gerente = f.cpf THEN (primeiro_nome, nome_meio, ultimo_nome)
-
-END AS gerente,
-	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) AS funcionario,
+	WHEN dp.numero_departamento = 1 THEN 'Jorge E. Brito'
+	WHEN dp.numero_departamento = 4 THEN 'Jennifer S. Souza'
+	WHEN dp.numero_departamento = 5 THEN 'Fernando T. Wong'
+END 									AS gerente,
+	nome_departamento 						AS departamento,
+	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 		AS funcionario,
 	salario
 
 FROM departamento dp
 
-INNER JOIN funcionario f ON (dp.numero_departamento = f.numero_departamento);
+INNER JOIN funcionario f ON (dp.numero_departamento = f.numero_departamento)
+ORDER BY nome_departamento ASC, salario DESC;
 
 
 */
