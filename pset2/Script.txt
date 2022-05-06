@@ -1,23 +1,4 @@
-'''ruby
-  type: data
-  color: "#e38c00"
-  tm_scope: source.sql
-  ace_mode: sql
-  codemirror_mode: sql
-  codemirror_mime_type: text/x-sql
-  extensions:
-  - ".sql"
-  - ".cql"
-  - ".ddl"
-  - ".inc"
-  - ".mysql"
-  - ".prc"
-  - ".tab"
-  - ".udf"
-  - ".viw"
-  language_id: 333
 
-'''
 /*
 
 Professor, construí todo o script usando o command line do PostgreSQL, quando testei alguns comandos no MySql da faculdade não rodou. Comando comando como o que usei para tirar o valor da idade em anos, DATEPART no PostgreSQL que sempre dá erro no MySQL.
