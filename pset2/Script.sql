@@ -66,7 +66,7 @@ ORDER BY nome ASC;
 /* QUESTÃO 05: prepare um relatório que liste, para cada departamento, o nome
 do gerente e o nome dos funcionários. Ordene esse relatório por nome do departamento
 (em ordem crescente) e por salário dos funcionários (em ordem decrescente). */
-/*
+
 
 SELECT 
 		
@@ -84,8 +84,6 @@ FROM departamento dp
 INNER JOIN funcionario f ON (dp.numero_departamento = f.numero_departamento)
 ORDER BY nome_departamento ASC, salario DESC;
 
-
-*/
 
 /* QUESTÃO 06: prepare um relatório que mostre o nome completo dos funcionários
 que têm dependentes, o departamento onde eles trabalham e, para cada funcionário,
