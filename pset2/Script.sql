@@ -147,9 +147,10 @@ SELECT
 
 FROM projeto p
 INNER JOIN departamento d ON ( d.numero_departamento = p.numero_departamento)
-INNER JOIN trabalha_em te ON ( te.nome_projeto = p.nome_projeto)
+INNER JOIN trabalha_em te ON ( te.numero_projeto = p.numero_projeto)
 GROUP BY p.nome_projeto, d.nome_departamento
 ORDER BY p.nome_projeto;
+
 
 
 /* 
