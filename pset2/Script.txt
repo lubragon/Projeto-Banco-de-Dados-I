@@ -10,13 +10,12 @@ Professor, construí todo o script usando o command line do PostgreSQL, quando t
 /* QUESTÃO 01: prepare um relatório que mostre a média salarial dos funcionários
 de cada departamento. */
 
-```ruby
 SELECT 
 	numero_departamento 	AS departamento,
 	AVG(salario)		AS media_salarial
 FROM funcionario
 GROUP BY numero_departamento;
-```
+
 
 
 
