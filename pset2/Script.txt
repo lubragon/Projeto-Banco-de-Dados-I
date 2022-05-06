@@ -230,7 +230,7 @@ SELECT
 FROM funcionario f
 INNER JOIN departamento d ON (d.numero_departamento = f.numero_departamento)
 GROUP BY departamento, f.numero_departamento
-ORDER BY numero_departamento ASC;
+ORDER BY f.numero_departamento ASC;
 
 
 /* QUESTÃO 15: como um funcionário pode estar alocado em mais de um projeto,
