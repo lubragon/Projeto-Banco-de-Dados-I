@@ -128,12 +128,14 @@ SELECT DISTINCT
 	f.numero_departamento 							AS departamento, 
 	p.nome_projeto,
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
-	SUM(horas)								AS horas_trabalhadas
+	SUM(horas) 								AS horas						
 FROM funcionario f
 INNER JOIN trabalha_em te ON (f.cpf = te.cpf_funcionario)
-INNER JOIN projeto p ON ( f.numero_departamento = p.numero_departamento)
+INNER JOIN projeto p ON ( te.numero_projeto = p.numero_projeto)
+WHERE f.cpf = te.cpf_funcionario
 GROUP BY f.numero_departamento, p.nome_projeto, funcionario
-ORDER BY p.nome_projeto;
+ORDER BY funcionario;
+
 
 /* QUESTÃO 09: prepare um relatório que mostre a soma total das horas de cada
 projeto em cada departamento. Obs.: o relatório deve exibir o nome do departamento,
