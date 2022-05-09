@@ -192,9 +192,9 @@ que, mesmo estando alocados a algum projeto, não registraram nenhuma hora traba
 
 
 SELECT DISTINCT
-	nome_departamento 							AS departamento,
-	nome_projeto								AS projeto,
-	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario
+	d.nome_departamento 							AS departamento,
+	p.nome_projeto 								AS projeto,
+	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 		 	AS funcionario
 
 FROM funcionario f
 INNER JOIN departamento d ON ( d.numero_departamento = f.numero_departamento)
@@ -249,8 +249,8 @@ o nome completo e o departamento também devem aparecer no relatório. */
 
 SELECT 
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS nome_completo,
-	nome_departamento 							AS departamento,
-	nome_projeto								AS projeto,
+	d.nome_departamento 							AS departamento,
+	d.nome_projeto 								AS projeto
 	
 FROM funcionario f
 INNER JOIN departamento d ON (d.numero_departamento = f.numero_departamento)
