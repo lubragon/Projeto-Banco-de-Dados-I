@@ -109,7 +109,7 @@ INNER JOIN dependente d ON (f.cpf = d.cpf_funcionario);
 /* QUESTÃO 07: prepare um relatório que mostre, para cada funcionário que NÃO
 TEM dependente, seu nome completo, departamento e salário.*/ 
 
-SELECT
+SELECT DISTINCT
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
 	f.numero_departamento 							AS departamento,
 	salario
@@ -170,7 +170,7 @@ de cada departamento.
 nome do projeto e o valor total que o funcionário receberá referente às horas trabalhadas
 naquele projeto. */
 
-SELECT
+SELECT DISTINCT
 
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
 	p.nome_projeto							 	AS projeto,
