@@ -55,12 +55,11 @@ SELECT
  	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS nome,
  	DATE_PART ('year', NOW()) - DATE_PART ('year', data_nascimento)		AS idade, 
 	salario 								AS salario_atual, 
+	CASE 
+		WHEN salario < 35000 THEN salario + salario * 0.2
+		WHEN salario >= 35000 THEN salario + salario * 0.15 
 
-CASE 
-	WHEN salario < 35000 THEN salario + salario * 0.2
-	WHEN salario >= 35000 THEN salario + salario * 0.15 
-
-END 										AS salario_reajustado
+	END 									AS salario_reajustado
 FROM funcionario
 ORDER BY nome ASC;
 
