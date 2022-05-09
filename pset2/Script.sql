@@ -1,7 +1,8 @@
 
 /*
 
-Professor, construí todo o script usando o command line do PostgreSQL, quando testei alguns comandos no MySql da faculdade não rodou. Comando comando como o que usei para tirar o valor da idade em anos, DATEPART no PostgreSQL que sempre dá erro no MySQL.
+Professor, construí todo o script usando o command line do PostgreSQL, quando testei alguns comandos no MySql da faculdade não rodou.
+Comando como o que usei para tirar o valor da idade em anos, DATEPART no PostgreSQL que sempre dá erro no MySQL.
 
 */
 
