@@ -128,7 +128,7 @@ em cada projeto.*/
 	
 SELECT DISTINCT
 	f.numero_departamento 							AS departamento, 
-	p.nome_projeto								AS projeto,
+	p.nome_projeto							 	AS projeto,
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
 	SUM(horas) 								AS horas	
 	
@@ -175,7 +175,7 @@ naquele projeto. */
 SELECT
 
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
-	nome_projeto								AS projeto,
+	p.nome_projeto							 	AS projeto,
 	SUM(horas) * 50 							AS valor
 	
 FROM funcionario f
