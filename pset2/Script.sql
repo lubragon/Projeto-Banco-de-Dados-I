@@ -250,7 +250,7 @@ o nome completo e o departamento também devem aparecer no relatório. */
 SELECT 
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS nome_completo,
 	d.nome_departamento 							AS departamento,
-	d.nome_projeto 								AS projeto
+	p.nome_projeto 								AS projeto
 	
 FROM funcionario f
 INNER JOIN departamento d ON (d.numero_departamento = f.numero_departamento)
