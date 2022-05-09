@@ -80,7 +80,6 @@ SELECT
 	salario
 
 FROM departamento dp
-
 INNER JOIN funcionario f ON (dp.numero_departamento = f.numero_departamento)
 ORDER BY nome_departamento ASC, salario DESC;
 
@@ -101,9 +100,8 @@ SELECT
 	CASE
 		WHEN d.sexo = 'M' THEN 'Masculino'
 		WHEN d.sexo = 'F' THEN 'Feminino'
-
-	END 									AS genero_dependente
-
+	 END 									AS genero_dependente
+	
 FROM funcionario f
 INNER JOIN dependente d ON (f.cpf = d.cpf_funcionario);
 
