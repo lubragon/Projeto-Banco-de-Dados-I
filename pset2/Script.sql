@@ -215,9 +215,9 @@ SELECT
 FROM funcionario 
 UNION
 SELECT
-	CONCAT(nome_dependente,' ', ultimo_nome)				AS nome_completo,
-	DATE_PART ('year', NOW()) - DATE_PART ('year', d.data_nascimento) 	AS idade,
-	d.sexo									AS genero 					
+	CONCAT(nome_dependente,' ', ultimo_nome),
+	DATE_PART ('year', NOW()) - DATE_PART ('year', d.data_nascimento),
+	d.sexo 					
 FROM dependente d
 INNER JOIN funcionario f ON ( d.cpf_funcionario = f.cpf)
 ORDER BY idade DESC;
