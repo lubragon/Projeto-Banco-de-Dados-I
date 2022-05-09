@@ -41,7 +41,7 @@ SELECT
 	salario 
 FROM 
 	departamento dp
-INNER JOIN funcionario  f ON f.numero_departamento = dp.numero_departamento
+INNER JOIN funcionario  f ON (f.numero_departamento = dp.numero_departamento)
 ORDER BY nome_departamento ASC;
 
 
