@@ -73,10 +73,8 @@ SELECT
 	CASE 
 		WHEN dp.numero_departamento = 1 THEN 'Jorge E. Brito'
 		WHEN dp.numero_departamento = 4 THEN 'Jennifer S. Souza'
-		WHEN dp.numero_departamento = 5 THEN 'Fernando T. Wong'
-		
-		END 								AS gerente,
-	
+		WHEN dp.numero_departamento = 5 THEN 'Fernando T. Wong'	
+	END 									AS gerente,	
 	nome_departamento 							AS departamento,
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
 	salario
@@ -94,19 +92,21 @@ dependente e o sexo (o sexo NÃO DEVE aparecer como M ou F, deve aparecer
 como “Masculino” ou “Feminino”).*/
  
 SELECT
+
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
 	numero_departamento 							AS departamento,
 	CONCAT(nome_dependente,' ', ultimo_nome) 				AS dependente, 
 	DATE_PART ('year', NOW()) - DATE_PART ('year', d.data_nascimento) 	AS idade_dependente,
 
-CASE
-	WHEN d.sexo = 'M' THEN 'Masculino'
-	WHEN d.sexo = 'F' THEN 'Feminino'
+	CASE
+		WHEN d.sexo = 'M' THEN 'Masculino'
+		WHEN d.sexo = 'F' THEN 'Feminino'
 
-END 										AS genero_dependente
+	END 									AS genero_dependente
 
 FROM funcionario f
 INNER JOIN dependente d ON (f.cpf = d.cpf_funcionario);
+
 
 /* QUESTÃO 07: prepare um relatório que mostre, para cada funcionário que NÃO
 TEM dependente, seu nome completo, departamento e salário.*/ 
@@ -115,6 +115,7 @@ SELECT
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
 	f.numero_departamento 							AS departamento,
 	salario
+	
 FROM funcionario f
 LEFT OUTER JOIN dependente d ON (f.cpf = d.cpf_funcionario)
 WHERE d.cpf_funcionario IS NULL
@@ -129,7 +130,8 @@ SELECT DISTINCT
 	f.numero_departamento 							AS departamento, 
 	p.nome_projeto,
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
-	SUM(horas) 								AS horas						
+	SUM(horas) 								AS horas	
+	
 FROM funcionario f
 INNER JOIN trabalha_em te ON (f.cpf = te.cpf_funcionario)
 INNER JOIN projeto p ON ( te.numero_projeto = p.numero_projeto)
@@ -213,9 +215,9 @@ SELECT
 FROM funcionario 
 UNION
 SELECT
-	CONCAT(nome_dependente,' ', ultimo_nome),
-	DATE_PART ('year', NOW()) - DATE_PART ('year', d.data_nascimento),
-	d.sexo 					
+	CONCAT(nome_dependente,' ', ultimo_nome)				AS nome_completo,
+	DATE_PART ('year', NOW()) - DATE_PART ('year', d.data_nascimento) 	AS idade,
+	d.sexo									AS genero 					
 FROM dependente d
 INNER JOIN funcionario f ON ( d.cpf_funcionario = f.cpf)
 ORDER BY idade DESC;
