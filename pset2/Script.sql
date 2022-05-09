@@ -22,8 +22,8 @@ GROUP BY numero_departamento;
 /* Questao 2: Descobrir media salarial de homens e mulheres */
 
 SELECT 
-	sexo 		AS genero,
-	AVG(salario) 	AS media_salarial
+	sexo 			AS genero,
+	AVG(salario) 		AS media_salarial
 FROM funcionario
 GROUP BY sexo;
 
@@ -33,10 +33,10 @@ cada departamento, inclua as seguintes informações de seus funcionários: o no
 completo, a data de nascimento, a idade em anos completos e o salário. */
 
 SELECT 
-	nome_departamento 						AS departamento, 
-	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 		AS nome, 
+	nome_departamento 							AS departamento, 
+	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS nome, 
 	data_nascimento, 
-	DATE_PART ('year', NOW()) - DATE_PART ('year', data_nascimento)	AS idade, 
+	DATE_PART ('year', NOW()) - DATE_PART ('year', data_nascimento)		AS idade, 
 	salario 
 FROM 
 	departamento dp
@@ -128,7 +128,7 @@ em cada projeto.*/
 	
 SELECT DISTINCT
 	f.numero_departamento 							AS departamento, 
-	p.nome_projeto,
+	p.nome_projeto								AS projeto,
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
 	SUM(horas) 								AS horas	
 	
@@ -173,9 +173,11 @@ nome do projeto e o valor total que o funcionário receberá referente às horas
 naquele projeto. */
 
 SELECT
+
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
-	nome_projeto,
+	nome_projeto								AS projeto,
 	SUM(horas) * 50 							AS valor
+	
 FROM funcionario f
 INNER JOIN projeto p ON ( p.numero_departamento = f.numero_departamento)
 INNER JOIN trabalha_em te ON (te.numero_projeto = p.numero_projeto)
@@ -190,8 +192,8 @@ que, mesmo estando alocados a algum projeto, não registraram nenhuma hora traba
 
 
 SELECT DISTINCT
-	nome_departamento,
-	nome_projeto,
+	nome_departamento 							AS departamento,
+	nome_projeto								AS projeto,
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario
 
 FROM funcionario f
@@ -247,8 +249,9 @@ o nome completo e o departamento também devem aparecer no relatório. */
 
 SELECT 
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS nome_completo,
-	nome_departamento,
-	nome_projeto
+	nome_departamento 							AS departamento,
+	nome_projeto								AS projeto,
+	
 FROM funcionario f
 INNER JOIN departamento d ON (d.numero_departamento = f.numero_departamento)
 INNER JOIN projeto p ON (p.numero_departamento = d.numero_departamento)
