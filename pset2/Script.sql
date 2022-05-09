@@ -70,13 +70,15 @@ do gerente e o nome dos funcionários. Ordene esse relatório por nome do depart
 
 SELECT 
 		
-CASE 
-	WHEN dp.numero_departamento = 1 THEN 'Jorge E. Brito'
-	WHEN dp.numero_departamento = 4 THEN 'Jennifer S. Souza'
-	WHEN dp.numero_departamento = 5 THEN 'Fernando T. Wong'
-END 									AS gerente,
-	nome_departamento 						AS departamento,
-	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 		AS funcionario,
+	CASE 
+		WHEN dp.numero_departamento = 1 THEN 'Jorge E. Brito'
+		WHEN dp.numero_departamento = 4 THEN 'Jennifer S. Souza'
+		WHEN dp.numero_departamento = 5 THEN 'Fernando T. Wong'
+		
+		END 								AS gerente,
+	
+	nome_departamento 							AS departamento,
+	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
 	salario
 
 FROM departamento dp
