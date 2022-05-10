@@ -8,8 +8,7 @@ Comando como o que usei para tirar o valor da idade em anos, DATEPART no Postgre
 
 
 
-/* QUESTÃO 01: prepare um relatório que mostre a média salarial dos funcionários
-de cada departamento. */
+/* QUESTÃO 01: prepare um relatório que mostre a média salarial dos funcionários de cada departamento. */
 
 SELECT 
 	numero_departamento 	AS departamento,
@@ -61,6 +60,7 @@ SELECT
 	END 									AS salario_reajustado
 FROM funcionario
 ORDER BY nome ASC;
+
 
 /* QUESTÃO 05: prepare um relatório que liste, para cada departamento, o nome
 do gerente e o nome dos funcionários. Ordene esse relatório por nome do departamento
