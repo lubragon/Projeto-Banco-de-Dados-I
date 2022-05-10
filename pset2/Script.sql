@@ -56,9 +56,8 @@ SELECT
  	DATE_PART ('year', NOW()) - DATE_PART ('year', data_nascimento)		AS idade, 
 	salario 								AS salario_atual, 
 	CASE 
-		WHEN salario < 35000 THEN salario + salario * 0.2
-		WHEN salario >= 35000 THEN salario + salario * 0.15 
-
+	     WHEN salario < 35000 THEN salario + salario * 0.2
+	     WHEN salario >= 35000 THEN salario + salario * 0.15 
 	END 									AS salario_reajustado
 FROM funcionario
 ORDER BY nome ASC;
@@ -71,9 +70,9 @@ do gerente e o nome dos funcionários. Ordene esse relatório por nome do depart
 SELECT 
 		
 	CASE 
-		WHEN dp.numero_departamento = 1 THEN 'Jorge E. Brito'
-		WHEN dp.numero_departamento = 4 THEN 'Jennifer S. Souza'
-		WHEN dp.numero_departamento = 5 THEN 'Fernando T. Wong'	
+	    WHEN dp.numero_departamento = 1 THEN 'Jorge E. Brito'
+	    WHEN dp.numero_departamento = 4 THEN 'Jennifer S. Souza'
+	    WHEN dp.numero_departamento = 5 THEN 'Fernando T. Wong'	
 	END 									AS gerente,	
 	nome_departamento 							AS departamento,
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
@@ -98,9 +97,9 @@ SELECT
 	DATE_PART ('year', NOW()) - DATE_PART ('year', d.data_nascimento) 	AS idade_dependente,
 
 	CASE
-		WHEN d.sexo = 'M' THEN 'Masculino'
-		WHEN d.sexo = 'F' THEN 'Feminino'
-	 END 									AS genero_dependente
+	     WHEN d.sexo = 'M' THEN 'Masculino'
+	     WHEN d.sexo = 'F' THEN 'Feminino'
+	END 									AS genero_dependente
 	
 FROM funcionario f
 INNER JOIN dependente d ON (f.cpf = d.cpf_funcionario);
@@ -143,8 +142,8 @@ projeto em cada departamento. Obs.: o relatório deve exibir o nome do departame
 o nome do projeto e a soma total das horas.*/
 
 SELECT
-	p.nome_projeto 					AS nome_projeto,
-	d.nome_departamento 				AS nome_departamento,
+	p.nome_projeto 					AS projeto,
+	d.nome_departamento 				AS departamento,
 	SUM(horas) 					AS horas_trabalhadas
 
 FROM projeto p
@@ -155,14 +154,10 @@ ORDER BY p.nome_projeto;
 
 
 
-/* 
 
-A QUESTÃO 10 ESTÁ IGUAL A PRIMEIRA!!
- 
-QUESTÃO 10: prepare um relatório que mostre a média salarial dos funcionários
-de cada departamento.
 
-*/
+-- A QUESTÃO 10 ESTÁ IGUAL A PRIMEIRA!! --
+
 
 
 /* QUESTÃO 11: considerando que o valor pago por hora trabalhada em um projeto
@@ -246,7 +241,7 @@ Atenção: se houver algum funcionário que não está alocado em nenhum projeto
 o nome completo e o departamento também devem aparecer no relatório. */
 
 SELECT 
-	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS nome_completo,
+	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS nome,
 	d.nome_departamento 							AS departamento,
 	p.nome_projeto 								AS projeto
 	
