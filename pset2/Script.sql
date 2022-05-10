@@ -248,5 +248,5 @@ SELECT
 FROM funcionario f
 INNER JOIN departamento d ON (d.numero_departamento = f.numero_departamento)
 INNER JOIN projeto p ON (p.numero_departamento = d.numero_departamento)
-ORDER BY nome_completo ASC;
+ORDER BY nome ASC;
 	
