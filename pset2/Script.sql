@@ -67,8 +67,7 @@ do gerente e o nome dos funcionários. Ordene esse relatório por nome do depart
 (em ordem crescente) e por salário dos funcionários (em ordem decrescente). */
 
 
-SELECT 
-		
+SELECT 	
 	CASE 
 	    WHEN dp.numero_departamento = 1 THEN 'Jorge E. Brito'
 	    WHEN dp.numero_departamento = 4 THEN 'Jennifer S. Souza'
@@ -90,7 +89,6 @@ dependente e o sexo (o sexo NÃO DEVE aparecer como M ou F, deve aparecer
 como “Masculino” ou “Feminino”).*/
  
 SELECT
-
 	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
 	numero_departamento 							AS departamento,
 	CONCAT(nome_dependente,' ', ultimo_nome) 				AS dependente, 
@@ -109,9 +107,9 @@ INNER JOIN dependente d ON (f.cpf = d.cpf_funcionario);
 TEM dependente, seu nome completo, departamento e salário.*/ 
 
 SELECT DISTINCT
-	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
-	f.numero_departamento 							AS departamento,
-	salario
+		CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 		AS funcionario,
+		f.numero_departamento 						AS departamento,
+		salario
 	
 FROM funcionario f
 LEFT OUTER JOIN dependente d ON (f.cpf = d.cpf_funcionario)
@@ -124,10 +122,10 @@ em cada projeto. Além disso inclua o número de horas trabalhadas por cada func
 em cada projeto.*/ 
 	
 SELECT DISTINCT
-	f.numero_departamento 							AS departamento, 
-	p.nome_projeto							 	AS projeto,
-	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 			AS funcionario,
-	SUM(horas) 								AS horas	
+		f.numero_departamento 						AS departamento, 
+		p.nome_projeto							AS projeto,
+		CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 		AS funcionario,
+		SUM(horas) 							AS horas	
 	
 FROM funcionario f
 INNER JOIN trabalha_em te ON (f.cpf = te.cpf_funcionario)
@@ -185,9 +183,9 @@ que, mesmo estando alocados a algum projeto, não registraram nenhuma hora traba
 
 
 SELECT DISTINCT
-	d.nome_departamento 							AS departamento,
-	p.nome_projeto 								AS projeto,
-	CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 		 	AS funcionario
+		d.nome_departamento 						AS departamento,
+		p.nome_projeto 							AS projeto,
+		CONCAT(primeiro_nome,' ', nome_meio,' ', ultimo_nome) 		AS funcionario
 
 FROM funcionario f
 INNER JOIN departamento d ON ( d.numero_departamento = f.numero_departamento)
