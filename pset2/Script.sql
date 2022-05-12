@@ -1,8 +1,13 @@
 
 /*
 
-Professor, construí todo o script usando o command line do PostgreSQL, quando testei alguns comandos no MySql da faculdade não rodou.
-Comando como o que usei para tirar o valor da idade em anos, DATEPART no PostgreSQL que sempre dá erro no MySQL.
+Professor, construí todo o script usando o command line do PostgreSQL, alguns comandos utilizados neste script não rodam não MySql.
+
+
+ATENÇÃO: Professor, não entendi o porquê, mas quando o código é copiado utilizando o botão que o GitHub disponibiliza ("Copy raw contents"),
+a linha 7 da Questão 8 apresenta o seguinte erro "p.nome_projetoAS projeto,"  acho que é um bug, porque no script eu dei claramente tem espaço entre
+p.nome_projeto e AS projeto. Peço que, por favor, copie o código com o mouse. Muito obrigado!
+
 
 */
 
